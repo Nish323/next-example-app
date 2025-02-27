@@ -1,5 +1,6 @@
 'use client';
-import { useFormState, useFormStatus } from "react-dom";
+import { useActionState } from "react";
+import { useFormStatus } from "react-dom";
 
 import { createTask } from "../../actions/sampleActioins";
 
@@ -7,7 +8,7 @@ const ServerActionPage = () => {
   const taskId = 1;
   const createTaskWithTaskId = createTask.bind(null, taskId);
   const initialState = { erro: '' }
-  const [state, formAction] = useFormState(createTaskWithTaskId, initialState);
+  const [state, formAction] = useActionState(createTaskWithTaskId, initialState);
 
   const SubmitButton = () => {
     const { pending } = useFormStatus();
